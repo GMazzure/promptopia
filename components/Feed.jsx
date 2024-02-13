@@ -1,17 +1,17 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 import PromptCard from "./PromptCard";
 
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
-    <div className="mt-16 prompt-layout">
+    <div className="mt-16 prompt_layout">
       {data.map((post) => (
         <PromptCard
           key={post._id}
           post={post}
-          handleTagClick={handleTagClick}
+          handleTagClick={() => handleTagClick(post)}
         />
       ))}
     </div>
@@ -20,8 +20,18 @@ const PromptCardList = ({ data, handleTagClick }) => {
 
 function Feed() {
   const [searchText, setSearchText] = useState("");
-  const [posts, setPosts] = useState([])
-  const handleSearchChange = (e) => {};
+  const [posts, setPosts] = useState([]);
+  const handleSearchChange = (e) => {
+    setSearchText(e.target.value);
+  };
+  const filteredPosts = useMemo(() => {
+    return posts.filter(
+      (p) =>
+        p.prompt.includes(searchText) ||
+        p.tag.includes(searchText) ||
+        p.creator.username.includes(searchText)
+    );
+  }, [searchText, posts]);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -47,8 +57,12 @@ function Feed() {
           className="search_input peer"
         />
       </form>
-
-      <PromptCardList data={posts} handleTagClick={() => {}} />
+      <PromptCardList
+        data={filteredPosts}
+        handleTagClick={(prompt) => {
+          setSearchText(prompt.tag);
+        }}
+      />
     </section>
   );
 }
