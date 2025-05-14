@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Promptopia
+
+Promptopia is an open-source AI prompting tool for the modern world to discover, create, and share creative prompts.
+
+![Promptopia Screenshot](add-image-here)
+
+## Features
+
+- **Discover AI Prompts**: Browse through a collection of AI prompts shared by the community
+- **Create and Share**: Create your own AI prompts and share them with the world
+- **User Authentication**: Secure login and registration system using NextAuth
+- **User Profiles**: Personalized profiles to manage your prompts
+- **Search Functionality**: Search for prompts by content, tag, or username
+- **Copy to Clipboard**: Easily copy prompts with a single click
+- **Responsive Design**: Fully responsive UI that works on desktop and mobile devices
+- **Tag-based Organization**: Organize and find prompts using tags
+
+## Tech Stack
+
+- **Frontend**: 
+  - Next.js 14
+  - React 18
+  - TailwindCSS for styling
+  
+- **Backend**:
+  - Next.js API Routes
+  - MongoDB with Mongoose for database
+  
+- **Authentication**:
+  - NextAuth.js for authentication
+  
+- **Deployment**:
+  - Can be deployed on Vercel or any platform supporting Next.js
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js (v14 or later)
+- npm or yarn
+- MongoDB database (local or Atlas)
+
+### Environment Variables
+
+Create a `.env` file in the root directory with the following variables:
+
+```
+MONGODB_URI=your_mongodb_connection_string
+NEXTAUTH_URL=http://localhost:3001
+NEXTAUTH_URL_INTERNAL=http://localhost:3001
+NEXTAUTH_SECRET=your_nextauth_secret
+
+# For OAuth providers (e.g., Google)
+GOOGLE_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/promptopia.git
+   cd promptopia
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-## Learn More
+3. Run the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+4. Open [http://localhost:3001](http://localhost:3001) in your browser to see the application.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Usage
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Creating a Prompt
 
-## Deploy on Vercel
+1. Sign in to your account
+2. Click on "Create Post" in the navigation bar
+3. Fill in the prompt details and tag
+4. Click "Create" to publish your prompt
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Browsing Prompts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- The home page displays all prompts from the community
+- Use the search bar to find specific prompts by content, tag, or username
+- Click on a tag to see related prompts
+
+### Managing Your Prompts
+
+1. Navigate to your profile page
+2. View all your created prompts
+3. Edit or delete your prompts as needed
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## Acknowledgments
+
+- Built with Next.js and MongoDB
+- Styled with TailwindCSS
+- Authentication provided by NextAuth.js
